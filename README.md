@@ -1,118 +1,85 @@
-<h1>📘 JavaScript Ödevleri</h1>
+<h1>📘 JavaScript Homework 1</h1>
 
-<p>Bu repo, JavaScript öğrenme sürecinde verilen <b>4 görev</b> çözümünü içermektedir. Her görev ayrı bir dosyada (<code>task-1.js</code>, <code>task-2.js</code>, <code>task-3.js</code>, <code>task-4.js</code>) uygulanmıştır.</p>
+<p>This repository contains solutions for <b>3 tasks</b> focused on <b>variables, data types, and basic functions</b> in JavaScript. Each task is implemented in a separate file (<code>task-1.js</code>, <code>task-2.js</code>, <code>task-3.js</code>).</p>
 
 <hr/>
 
-<h2>🔹 Görev 1: Droid Siparişleri (<code>task-1.js</code>)</h2>
-<p>Tamir droidleri sipariş sistemi için bir fonksiyon yazıldı.</p>
+<h2>🔹 Task 1: Droid Order (<code>task-1.js</code>)</h2>
+<p>A function that calculates the total cost of droids and returns a formatted message.</p>
 
-<pre><code>function makeTransaction(quantity, pricePerDroid, customerCredits) {
+<pre>
+function makeTransaction(quantity, pricePerDroid) {
   const totalPrice = quantity * pricePerDroid;
-
-  if (totalPrice &gt; customerCredits) {
-    return "Insufficient funds!";
-  }
-
   return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
 }
-</code></pre>
+</pre>
 
-<h3>✅ Test Sonuçları</h3>
-<pre><code>makeTransaction(5, 3000, 23000) → "You ordered 5 droids worth 15000 credits!"
-makeTransaction(3, 1000, 15000) → "You ordered 3 droids worth 3000 credits!"
-makeTransaction(10, 5000, 8000) → "Insufficient funds!"
-makeTransaction(8, 2000, 10000) → "Insufficient funds!"
-makeTransaction(10, 500, 5000) → "You ordered 10 droids worth 5000 credits!"
-</code></pre>
+<h3>✅ Test Results</h3>
+<pre>
+makeTransaction(5, 3000) → "You ordered 5 droids worth 15000 credits!"
+makeTransaction(3, 1000) → "You ordered 3 droids worth 3000 credits!"
+makeTransaction(10, 500) → "You ordered 10 droids worth 5000 credits!"
+</pre>
 
 <hr/>
 
-<h2>🔹 Görev 2: Mesaj Biçimlendirme (<code>task-2.js</code>)</h2>
-<p>Metin, maksimum uzunluğu aşıyorsa kesilip <code>...</code> eklenir.</p>
+<h2>🔹 Task 2: Product Delivery (<code>task-2.js</code>)</h2>
+<p>A function that calculates the total delivery cost (product price + delivery fee) and returns a formatted message.</p>
 
-<pre><code>function formatMessage(message, maxLength) {
-  if (message.length &lt;= maxLength) {
-    return message;
-  }
-  return message.slice(0, maxLength) + "...";
+<pre>
+function getShippingMessage(country, price, deliveryFee) {
+  const totalPrice = price + deliveryFee;
+  return `Shipping to ${country} will cost ${totalPrice} credits`;
 }
-</code></pre>
+</pre>
 
-<h3>✅ Test Sonuçları</h3>
-<pre><code>formatMessage("Curabitur ligula sapien", 16) → "Curabitur ligula..."
-formatMessage("Curabitur ligula sapien", 23) → "Curabitur ligula sapien"
-formatMessage("Vestibulum facilisis purus nec", 20) → "Vestibulum facilisis..."
-formatMessage("Vestibulum facilisis purus nec", 30) → "Vestibulum facilisis purus nec"
-formatMessage("Nunc sed turpis a felis in nunc fringilla", 15) → "Nunc sed turpis..."
-formatMessage("Nunc sed turpis a felis in nunc fringilla", 41) → "Nunc sed turpis a felis in nunc fringilla"
-</code></pre>
+<h3>✅ Test Results</h3>
+<pre>
+getShippingMessage("Australia", 120, 50) → "Shipping to Australia will cost 170 credits"
+getShippingMessage("Germany", 80, 20) → "Shipping to Germany will cost 100 credits"
+getShippingMessage("Sweden", 100, 20) → "Shipping to Sweden will cost 120 credits"
+</pre>
 
 <hr/>
 
-<h2>🔹 Görev 3: Spam Kontrolü (<code>task-3.js</code>)</h2>
-<p>Mesajda <b>spam</b> veya <b>sale</b> kelimeleri geçiyorsa <code>true</code>, yoksa <code>false</code> döndürür. Büyük/küçük harf duyarsızdır.</p>
+<h2>🔹 Task 3: Element Width (<code>task-3.js</code>)</h2>
+<p>A function that calculates the total width of an element (content + padding + border) assuming <code>box-sizing: border-box</code>.</p>
 
-<pre><code>function checkForSpam(message) {
-  const lowerMessage = message.toLowerCase();
-  return lowerMessage.includes("spam") || lowerMessage.includes("sale");
+<pre>
+function getElementWidth(content, padding, border) {
+  return parseFloat(content) + 2 * parseFloat(padding) + 2 * parseFloat(border);
 }
-</code></pre>
+</pre>
 
-<h3>✅ Test Sonuçları</h3>
-<pre><code>checkForSpam("Latest technology news") → false
-checkForSpam("JavaScript weekly newsletter") → false
-checkForSpam("Get best sale offers now!") → true
-checkForSpam("Amazing SalE, only tonight!") → true
-checkForSpam("Trust me, this is not a spam message") → true
-checkForSpam("Get rid of sPaM emails. Our book in on sale!") → true
-checkForSpam("[SPAM] How to earn fast money?") → true
-</code></pre>
+<h3>✅ Test Results</h3>
+<pre>
+getElementWidth("50px", "8px", "4px") → 74
+getElementWidth("60px", "12px", "8.5px") → 101
+getElementWidth("200px", "0px", "0px") → 200
+</pre>
 
 <hr/>
 
-<h2>🔹 Görev 4: Teslimat Maliyeti (<code>task-4.js</code>)</h2>
-<p>Kullanıcının ülkesine göre teslimat ücretini hesaplar. <code>switch</code> ifadesi kullanılmıştır.</p>
+<h2>📌 Summary & Reflection</h2>
 
-<pre><code>function getShippingCost(country) {
-  let price;
+<p>Great start! 🎉  
+In Module 1, you learned the <b>fundamentals of JavaScript</b>:</p>
 
-  switch (country) {
-    case "China":
-      price = 100;
-      break;
-    case "Chile":
-      price = 250;
-      break;
-    case "Australia":
-      price = 170;
-      break;
-    case "Jamaica":
-      price = 120;
-      break;
-    default:
-      return "Sorry, there is no delivery to your country";
-  }
-
-  return `Shipping to ${country} will cost ${price} credits`;
-}
-</code></pre>
-
-<h3>✅ Test Sonuçları</h3>
-<pre><code>getShippingCost("Australia") → "Shipping to Australia will cost 170 credits"
-getShippingCost("Germany") → "Sorry, there is no delivery to your country"
-getShippingCost("China") → "Shipping to China will cost 100 credits"
-getShippingCost("Chile") → "Shipping to Chile will cost 250 credits"
-getShippingCost("Jamaica") → "Shipping to Jamaica will cost 120 credits"
-getShippingCost("Sweden") → "Sorry, there is no delivery to your country"
-</code></pre>
-
-<hr/>
-
-<h2>📌 Özet</h2>
 <ul>
-  <li><b>Görev 1:</b> Droid sipariş sistemi</li>
-  <li><b>Görev 2:</b> Mesaj biçimlendirme</li>
-  <li><b>Görev 3:</b> Spam kontrolü</li>
-  <li><b>Görev 4:</b> Teslimat maliyeti</li>
+  <li>Declaring and using <b>variables</b></li>
+  <li>Working with <b>different data types</b>: numbers, strings</li>
+  <li>Basic <b>string operations</b> (concatenation, template strings)</li>
+  <li>How to define and call <b>functions</b></li>
+  <li>Returning values using <code>return</code></li>
+</ul>
+
+<p>This module forms the foundation for everything else. Now, with these basics mastered, you’re ready to move on to more complex topics like branching and loops in Module 2.</p>
+
+<hr/>
+
+<h2>📌 Overview</h2>
+<ul>
+  <li><b>Task 1:</b> Droid order calculation</li>
+  <li><b>Task 2:</b> Shipping cost calculation</li>
+  <li><b>Task 3:</b> Element width calculation</li>
 </ul>
